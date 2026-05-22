@@ -8,9 +8,6 @@ The list is read as guidance, not commitment. Anything here can be reordered, re
 
 Items that make the next team's first delta easier to write and reduce the gap between scaffold and lived practice.
 
-### Replace canonical-document placeholders in the README
-The README had two `{...}` placeholders pointing at the canonical RIVER document. They now resolve to https://www.river-framework.dev.
-
 ### Worked example: Platform/Enablement
 The hardest delta type to declare cleanly because the user is another engineer or team rather than an end customer. Validating the template against a Platform/Enablement release confirms the framework's claim that the same artifact serves all six types. Produces an additional `examples/RD-NNNN-...md` in the same evaluated state as the Growth example.
 
