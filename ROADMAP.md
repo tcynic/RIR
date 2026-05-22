@@ -9,7 +9,7 @@ The list is read as guidance, not commitment. Anything here can be reordered, re
 Items that make the next team's first delta easier to write and reduce the gap between scaffold and lived practice.
 
 ### Replace canonical-document placeholders in the README
-The README has two `{...}` placeholders pointing at the canonical R.I.V.E.R. document. Resolve these to real targets, or briefly inline the central framework claims if the canonical document does not yet exist. Without this, the repo's first read is incomplete.
+The README had two `{...}` placeholders pointing at the canonical RIVER document. They now resolve to https://www.river-framework.dev.
 
 ### Worked example: Platform/Enablement
 The hardest delta type to declare cleanly because the user is another engineer or team rather than an end customer. Validating the template against a Platform/Enablement release confirms the framework's claim that the same artifact serves all six types. Produces an additional `examples/RD-NNNN-...md` in the same evaluated state as the Growth example.
@@ -37,7 +37,7 @@ Walk the `related.supersedes` and `related.superseded_by` fields and surface orp
 Identify deltas that have been `proposed` for more than a configured threshold, or `active` past their Horizon. Both states represent process failures the framework cares about; the report is the visibility mechanism that turns implicit drift into explicit work.
 
 ### Maturity ladder rollup
-Once the repo has enough evaluated deltas, compute the team's position on the R.I.V.E.R. maturity ladder (Deploy, Control, Declare, Prove, Learn) from the artifact corpus. Genuinely speculative as a v2 item because the ladder's empirical calibration is still ahead of the framework. Worth keeping on the list as a marker.
+Once the repo has enough evaluated deltas, compute the team's position on the RIVER maturity ladder (Deploy, Control, Declare, Prove, Learn) from the artifact corpus. Genuinely speculative as a v2 item because the ladder's empirical calibration is still ahead of the framework. Worth keeping on the list as a marker.
 
 ## Schema evolution
 
@@ -68,7 +68,7 @@ A scheduled job (not the PR merge gate) that follows the URLs in `links.flags`, 
 ### Direct API integration with flag and experiment platforms
 Fetch actual rollout data from the platform of record and surface it in the generated index or the stale-delta report. Begins the path toward computing the seven metric families automatically. A v2 effort with platform-specific adapters; the file's `links` block already carries the addressing the integration needs.
 
-### R.I.V.E.R. voice prose linter
+### RIVER voice prose linter
 An optional check that flags em dashes, fragment bullets, and other voice violations against the style guide. Should be advisory rather than blocking; voice is a quality goal, not a correctness boundary.
 
 ### Tests for the CI script itself

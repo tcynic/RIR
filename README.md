@@ -2,9 +2,9 @@
 
 This repository holds the declared Release Delta Records (RDRs) for {Product}.
 
-A Release Delta is a structured artifact, created before a release begins, that names the type of release, the hypothesis being tested, the success signal that will tell us the hypothesis held, the target cohort, and the horizon by which we expect to know. Release Delta is the unit of analysis in R.I.V.E.R.; team and organization rollups aggregate over deltas, not over deploys, flags, or tickets.
+A Release Delta is a structured artifact, created before a release begins, that names the type of release, the hypothesis being tested, the success signal that will tell us the hypothesis held, the target cohort, and the horizon by which we expect to know. Release Delta is the unit of analysis in RIVER; team and organization rollups aggregate over deltas, not over deploys, flags, or tickets.
 
-This repository is the source of truth for what we are shipping, why, and how we will know it worked. The framework itself, the metric family definitions, and the maturity ladder live in {link to R.I.V.E.R. canonical document}. Read those when you want to know what the framework is. Read this README when you want to write or evaluate a delta.
+This repository is the source of truth for what we are shipping, why, and how we will know it worked. The framework itself, the metric family definitions, and the maturity ladder live at https://www.river-framework.dev. Read that when you want to know what the framework is. Read this README when you want to write or evaluate a delta.
 
 ## Quick start
 
@@ -147,4 +147,4 @@ If a single delta ships across multiple services, each service repo PR reference
 
 ## Getting help
 
-For framework questions, see {link to R.I.V.E.R. canonical document}. For repo conventions and CI failures, the error messages are written to be self-explanatory; if one is not, file an issue against this repo. For declaration review facilitation, contact {role/owner}.
+For framework questions, see https://www.river-framework.dev. For repo conventions and CI failures, the error messages are written to be self-explanatory; if one is not, file an issue against this repo. For declaration review facilitation, contact {role/owner}.
