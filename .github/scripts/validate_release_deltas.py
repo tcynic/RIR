@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""Validate Release Intent files in a pull request.
+"""Validate Release Delta files in a pull request.
 
-Runs as a GitHub Actions step on PRs touching docs/release-intents/.
+Runs as a GitHub Actions step on PRs touching docs/release-deltas/.
 Can also be run locally; set GITHUB_BASE_REF to the branch you are
 merging into (defaults to `main`).
 
 Validation rules:
   Format
-    - Filename matches RI-NNNN-slug.md.
+    - Filename matches RD-NNNN-slug.md.
     - YAML frontmatter is parseable and contains the required fields.
     - Frontmatter `id` matches the filename.
     - `status` is one of the allowed values.
@@ -39,8 +39,8 @@ from urllib.parse import urlparse
 import yaml
 
 
-INTENTS_DIR = Path("docs/release-intents")
-FILENAME_PATTERN = re.compile(r"^RI-(\d{4})-[a-z0-9-]+\.md$")
+DELTAS_DIR = Path("docs/release-deltas")
+FILENAME_PATTERN = re.compile(r"^RD-(\d{4})-[a-z0-9-]+\.md$")
 URL_PATTERN = re.compile(r"^https?://", re.IGNORECASE)
 
 VALID_STATUSES = {
@@ -122,8 +122,8 @@ def validate_format(path, content):
 
     m = FILENAME_PATTERN.match(path.name)
     if not m:
-        return ["filename does not match RI-NNNN-slug.md"]
-    expected_id = f"RI-{m.group(1)}"
+        return ["filename does not match RD-NNNN-slug.md"]
+    expected_id = f"RD-{m.group(1)}"
 
     try:
         fm, body = parse_frontmatter(content)
@@ -241,7 +241,7 @@ def validate_diff(path, new_content, base_ref):
             return errors
         if new_fm.get("status") != "proposed":
             errors.append(
-                f"new release intent must start with status 'proposed'; "
+                f"new release delta must start with status 'proposed'; "
                 f"got '{new_fm.get('status')}'"
             )
         return errors
@@ -269,7 +269,7 @@ def validate_diff(path, new_content, base_ref):
             if old_sections.get(name, "") != new_sections.get(name, ""):
                 errors.append(
                     f"section '{name}' is immutable once status is past 'proposed' "
-                    f"(base status: '{old_status}'); supersede this intent instead"
+                    f"(base status: '{old_status}'); supersede this delta instead"
                 )
         for field in LOCKED_FRONTMATTER_FIELDS:
             if old_fm.get(field) != new_fm.get(field):
@@ -282,7 +282,7 @@ def validate_diff(path, new_content, base_ref):
 
 # ---------- Change discovery ----------
 
-def changed_intent_paths(base_ref):
+def changed_delta_paths(base_ref):
     out = subprocess.run(
         ["git", "diff", "--name-status", f"{base_ref}...HEAD"],
         capture_output=True, text=True, check=True,
@@ -297,11 +297,11 @@ def changed_intent_paths(base_ref):
         if status.startswith("R") and len(parts) >= 3:
             old_path = Path(parts[1])
             new_path = Path(parts[2])
-            if _is_intent(old_path) or _is_intent(new_path):
+            if _is_delta(old_path) or _is_delta(new_path):
                 removed.append(old_path)
             continue
         path = Path(parts[-1])
-        if not _is_intent(path):
+        if not _is_delta(path):
             continue
         if status.startswith("D"):
             removed.append(path)
@@ -310,9 +310,9 @@ def changed_intent_paths(base_ref):
     return changed, removed
 
 
-def _is_intent(path):
+def _is_delta(path):
     return (
-        path.parent == INTENTS_DIR
+        path.parent == DELTAS_DIR
         and path.suffix == ".md"
         and path.name != "README.md"
     )
@@ -334,16 +334,16 @@ def main():
     if file_at_ref("README.md", full_ref) is None:
         full_ref = base_ref
 
-    changed, removed = changed_intent_paths(full_ref)
+    changed, removed = changed_delta_paths(full_ref)
     if not changed and not removed:
-        print("No release intent changes to validate.")
+        print("No release delta changes to validate.")
         return 0
 
     all_errors = []
     for path in removed:
         all_errors.append((
             path,
-            "deleting or renaming a release intent is not allowed; "
+            "deleting or renaming a release delta is not allowed; "
             "mark it 'abandoned' instead",
         ))
 
@@ -362,7 +362,7 @@ def main():
             print(f"  {path}: {err}")
         return 1
 
-    print(f"Validated {len(changed)} release intent(s). All checks passed.")
+    print(f"Validated {len(changed)} release delta(s). All checks passed.")
     return 0
 
 

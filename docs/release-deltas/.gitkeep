@@ -1,0 +1,3 @@
+# This directory holds declared Release Deltas.
+# Files follow the pattern RD-NNNN-slug.md.
+# See the repository README for the lifecycle and CI rules.

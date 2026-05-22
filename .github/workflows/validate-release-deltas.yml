@@ -1,10 +1,10 @@
-name: Validate Release Intents
+name: Validate Release Deltas
 
 on:
   pull_request:
     paths:
-      - 'docs/release-intents/**'
-      - '.github/scripts/validate_release_intents.py'
+      - 'docs/release-deltas/**'
+      - '.github/scripts/validate_release_deltas.py'
 
 jobs:
   validate:
@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: pip install pyyaml
 
-      - name: Validate release intents
-        run: python .github/scripts/validate_release_intents.py
+      - name: Validate release deltas
+        run: python .github/scripts/validate_release_deltas.py
         env:
           GITHUB_BASE_REF: ${{ github.base_ref }}

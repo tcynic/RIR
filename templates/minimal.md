@@ -1,5 +1,5 @@
 ---
-id: RI-NNNN
+id: RD-NNNN
 title: {short title naming the release}
 status: proposed
 type: growth
@@ -17,7 +17,7 @@ links:
 <!--
 Sections below (Hypothesis, Success Signal, Target Cohort, Horizon)
 are immutable once status is past `proposed`. Edits to a declared
-intent should be made by superseding, not by rewriting.
+delta should be made by superseding, not by rewriting.
 -->
 
 # {Short title naming the release}

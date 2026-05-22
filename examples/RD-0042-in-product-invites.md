@@ -1,5 +1,5 @@
 ---
-id: RI-0042
+id: RD-0042
 title: Add in-product workspace invite flow
 status: evaluated
 type: growth
@@ -25,7 +25,7 @@ related:
 <!--
 Sections below (Hypothesis, Success Signal, Target Cohort, Horizon)
 are immutable once status is past `proposed`. Edits to a declared
-intent should be made by superseding, not by rewriting.
+delta should be made by superseding, not by rewriting.
 -->
 
 # Add in-product workspace invite flow
@@ -59,7 +59,7 @@ Decision by 2026-08-15. Sixteen weeks from declaration covers four weeks of coho
 Single flag `growth-in-product-invites` controls the feature. Reversal is flag-off, expected effective time under two minutes, no redeploy required. No database migration is involved; invite records produced before reversal continue to function. Email sends already in the queue at reversal will complete normally.
 
 ## Out of scope
-Invite acceptance UX (a separate workstream owned by the onboarding team). Bulk invite functionality (deferred, candidate for a follow-on intent). Changes to the invite email template (deferred).
+Invite acceptance UX (a separate workstream owned by the onboarding team). Bulk invite functionality (deferred, candidate for a follow-on delta). Changes to the invite email template (deferred).
 
 ## Notes
 Declaration review held 2026-04-22. Operations raised concern about email volume; engineering committed to rate-limiting at five invites per admin per day, well above the current baseline of approximately 1.2 invites per active admin per week. Product flagged the eleven-or-more-member exclusion for revisit if results in qualifying cohorts are positive.
@@ -71,6 +71,6 @@ Decomposition: invites sent per active admin rose 41% versus control, well above
 
 What we learned: contextual in-product prompts drive meaningful invite volume, and the marginal invitee acquired through this surface activates at a lower rate than the marginal invitee from the settings page. The most plausible explanation is that contextual prompts encourage admins to invite collaborators on specific assets, who skew toward weaker workspace fit than the core team members an admin invites from a settings page.
 
-The feature stays on at 100%. Volume gains are real, the activation gap is small, and reversal is not warranted. Two follow-up intents will pursue the structural finding: RI-0058 will test invitee onboarding improvements targeted at the contextual-invite source, and RI-0061 will explore restricting in-product prompts to asset types where contextual relevance is highest, on the theory that targeting tightens the activation gap.
+The feature stays on at 100%. Volume gains are real, the activation gap is small, and reversal is not warranted. Two follow-up deltas will pursue the structural finding: RD-0058 will test invitee onboarding improvements targeted at the contextual-invite source, and RD-0061 will explore restricting in-product prompts to asset types where contextual relevance is highest, on the theory that targeting tightens the activation gap.
 
 Guardrails: no guardrail triggered during the rollout. Spam complaint rate held at 0.04%, abandonment rate moved within 1% of control, invitee activation never approached the 25% reversal floor.

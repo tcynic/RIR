@@ -1,5 +1,5 @@
 ---
-id: RI-NNNN
+id: RD-NNNN
 title: {short title naming the release}
 status: proposed
 type: growth
@@ -24,7 +24,7 @@ related:
 <!--
 Sections below (Hypothesis, Success Signal, Target Cohort, Horizon)
 are immutable once status is past `proposed`. Edits to a declared
-intent should be made by superseding, not by rewriting.
+delta should be made by superseding, not by rewriting.
 -->
 
 # {Short title naming the release}
@@ -54,10 +54,10 @@ intent should be made by superseding, not by rewriting.
 {How this release can be pulled back. Which flag, which targeting rule, expected time to full reversal. If a database migration or other forward-only change is involved, name it explicitly.}
 
 ## Out of scope
-{What this intent is not claiming. Useful when a release touches several user journeys but only one is being measured.}
+{What this delta is not claiming. Useful when a release touches several user journeys but only one is being measured.}
 
 ## Notes
 {Discussion captured during declaration review. Free-form. Not part of the commitment.}
 
 ## Outcome
-{Filled in at evaluation. Hypothesis held or did not. What the success signal did. What was learned. Any follow-up Release Intents this generates.}
+{Filled in at evaluation. Hypothesis held or did not. What the success signal did. What was learned. Any follow-up Release Deltas this generates.}
