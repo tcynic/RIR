@@ -10,7 +10,7 @@ This repository is the source of truth for what we are shipping, why, and how we
 
 To write a new Release Delta:
 
-1. Copy `templates/minimal.md` to `docs/release-deltas/RD-NNNN-slug.md`, where `NNNN` is the next sequential number and `slug` is a short dashed-lowercase title.
+1. Run `scripts/new-delta.sh slug`, where `slug` is a short dashed-lowercase title. The helper finds the next sequential number, copies `templates/minimal.md` into `docs/release-deltas/`, fills the ID and declared date, and opens the file. If needed, you can still do this manually by copying `templates/minimal.md` to `docs/release-deltas/RD-NNNN-slug.md`.
 2. Fill in the YAML frontmatter and the five required sections.
 3. Open a pull request. The CI checks will tell you if anything is missing or malformed.
 4. Hold a declaration review with the three co-owners. Capture review notes in the Notes section.
